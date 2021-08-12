@@ -34,10 +34,10 @@ namespace WindowsFormsApp15
             this.rbOutline = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rbFill = new Guna.UI2.WinForms.Guna2RadioButton();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.cbFigures = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.guna2Panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +45,7 @@ namespace WindowsFormsApp15
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(395, 0);
+            this.label2.Location = new System.Drawing.Point(394, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 5;
@@ -58,7 +58,7 @@ namespace WindowsFormsApp15
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cbColor.FormattingEnabled = true;
-            this.cbColor.Location = new System.Drawing.Point(395, 20);
+            this.cbColor.Location = new System.Drawing.Point(394, 20);
             this.cbColor.Name = "cbColor";
             this.cbColor.Size = new System.Drawing.Size(565, 21);
             this.cbColor.TabIndex = 6;
@@ -101,7 +101,7 @@ namespace WindowsFormsApp15
             this.rbFill.CheckedState.InnerOffset = -4;
             this.rbFill.Location = new System.Drawing.Point(3, 3);
             this.rbFill.Name = "rbFill";
-            this.rbFill.Size = new System.Drawing.Size(38, 20);
+            this.rbFill.Size = new System.Drawing.Size(39, 20);
             this.rbFill.TabIndex = 0;
             this.rbFill.Text = "Fill";
             this.rbFill.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -118,11 +118,25 @@ namespace WindowsFormsApp15
             this.guna2Panel1.Controls.Add(this.button1);
             this.guna2Panel1.Controls.Add(this.rbOutline);
             this.guna2Panel1.Controls.Add(this.rbFill);
-            this.guna2Panel1.Location = new System.Drawing.Point(966, 20);
+            this.guna2Panel1.Location = new System.Drawing.Point(965, 20);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(169, 46);
+            this.guna2Panel1.Size = new System.Drawing.Size(170, 46);
             this.guna2Panel1.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(86, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(78, 43);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbFigures
             // 
@@ -143,7 +157,7 @@ namespace WindowsFormsApp15
             this.cbFigures.Location = new System.Drawing.Point(3, 20);
             this.cbFigures.Name = "cbFigures";
             this.cbFigures.ShadowDecoration.Parent = this.cbFigures;
-            this.cbFigures.Size = new System.Drawing.Size(386, 36);
+            this.cbFigures.Size = new System.Drawing.Size(385, 36);
             this.cbFigures.TabIndex = 0;
             this.cbFigures.SelectedIndexChanged += new System.EventHandler(this.cbFigures_SelectedIndexChanged);
             // 
@@ -152,7 +166,7 @@ namespace WindowsFormsApp15
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.67633F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.32367F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel1, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.cbColor, 1, 1);
@@ -176,20 +190,6 @@ namespace WindowsFormsApp15
             this.label1.TabIndex = 7;
             this.label1.Text = "Figures";
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(86, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 43);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +202,7 @@ namespace WindowsFormsApp15
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();

@@ -16,6 +16,8 @@ namespace WindowsFormsApp15
         public List<IFigure> Figures { get; set; } = new List<IFigure>();
         public IFactory FigureFactory { get; set; }
         public Color FigureColor { get; set; }
+
+
         public interface IFigure
         {
             Point point { get; set; }
@@ -23,15 +25,47 @@ namespace WindowsFormsApp15
             Color color { get; set; }
             bool isFill { get; set; }
         }
+        Circle Crc = new Circle
+        {
+            point = new Point(0, 0),
+            size = new Size(0, 0),
+            isFill = true,
+        };
         class Circle : IFigure
         {
+            public Circle()
+            {
+
+            }
+            public Circle(Point point, Size size)
+            {
+                this.point = point;
+                this.size = size;
+            }
+
             public Point point { get; set; }
             public Size size { get; set; }
             public Color color { get; set; }
             public bool isFill { get; set; }
         }
+        rectangle rec = new rectangle
+        {
+            point = new Point(0, 0),
+            size = new Size(0, 0),
+            isFill = true,
+        };
         class rectangle : IFigure
         {
+            public rectangle()
+            {
+
+            }
+            public rectangle(Point point, Size size)
+            {
+                this.point = point;
+                this.size = size;
+            }
+
             public Point point { get; set; }
             public Size size { get; set; }
             public Color color { get; set; }
@@ -136,6 +170,23 @@ namespace WindowsFormsApp15
         {
             using (var g = e.Graphics)
             {
+                SolidBrush brush1 = new SolidBrush(FigureColor);
+                Pen pen1 = new Pen(FigureColor, 5);
+
+                if (FigureFactory.GetFigure() is rectangle temp)
+                {
+                    if (temp.isFill)
+                        e.Graphics.FillRectangle(brush1, rec.point.X, rec.point.Y, rec.size.Width, rec.size.Height);
+                    else
+                        e.Graphics.DrawRectangle(pen1, rec.point.X, rec.point.Y, rec.size.Width, rec.size.Height);
+                }
+                else if (FigureFactory.GetFigure() is Circle temp1)
+                {
+                    if (temp1.isFill)
+                        e.Graphics.FillEllipse(brush1, Crc.point.X, Crc.point.Y, Crc.size.Width, Crc.size.Height);
+                    else
+                        e.Graphics.DrawEllipse(pen1, Crc.point.X, Crc.point.Y, Crc.size.Width, Crc.size.Height);
+                }
                 foreach (var item in Figures)
                 {
                     Pen pen = new Pen(item.color, 5);
@@ -176,10 +227,21 @@ namespace WindowsFormsApp15
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             MouseDownLocation = e.Location;
+            if (e.Button != MouseButtons.Left) return;
+            if (FigureFactory.GetFigure() is rectangle)
+            {
+                rec = new rectangle(e.Location, new Size(0, 0));
+            }
+            else if (FigureFactory.GetFigure() is Circle)
+            {
+                Crc = new Circle(e.Location, new Size(0, 0));
+            }
+            Invalidate();
         }
         public Point MouseUpLocation { get; set; }
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
+
             MouseUpLocation = e.Location;
 
             IFigure figure = FigureFactory.GetFigure();
@@ -205,13 +267,13 @@ namespace WindowsFormsApp15
                 triangle.TrianglePoints = points;
             }
             else
-                CreateFigure(figure);
+                CreateFigure(figure, MouseUpLocation);
 
             Figures.Add(figure);
             this.Refresh();
         }
 
-        private void CreateFigure(IFigure rect)
+        private void CreateFigure(IFigure rect, Point MouseUpLocation)
         {
             rect.color = FigureColor;
             if (MouseUpLocation.X >= MouseDownLocation.X)
@@ -248,7 +310,35 @@ namespace WindowsFormsApp15
         private void button1_Click(object sender, EventArgs e)
         {
             Figures = new List<IFigure>();
+            rec = new rectangle
+            {
+                color = Color.White,
+                point = new Point(0, 0),
+                size = new Size(0, 0),
+                isFill = true,
+            };
+            Crc = new Circle
+            {
+                color = Color.White,
+                point = new Point(0, 0),
+                size = new Size(0, 0),
+                isFill = true,
+            };
             this.Refresh();
+        }
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            if (FigureFactory.GetFigure() is rectangle)
+            {
+                CreateFigure(rec, e.Location);
+            }
+            else if (FigureFactory.GetFigure() is Circle)
+            {
+                CreateFigure(Crc, e.Location);
+            }
+
+            Invalidate();
         }
     }
 }
